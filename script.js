@@ -2,10 +2,6 @@ function scrollToTop() {
   window.scrollTo({top: 0, behavior: "smooth"});
 }
 
-const toggleMenu = () => {
-  document.querySelector(".nav-links").classList.toggle("active");
-};
-
 AOS.init();
 
 var typed = new Typed(".auto-type", {
@@ -15,9 +11,19 @@ var typed = new Typed(".auto-type", {
   loop: true,
 });
 
-const toggleButton = document.querySelector(".navbar-toggle");
+const toggleBtn = document.querySelector(".navbar-toggle");
 const navLinks = document.querySelector(".nav-links");
+const navItems = document.querySelectorAll(".nav-links li a");
 
-toggleButton.addEventListener("click", () => {
+toggleBtn.addEventListener("click", () => {
   navLinks.classList.toggle("active");
+  toggleBtn.classList.toggle("active"); 
+});
+
+
+navItems.forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    toggleBtn.classList.remove("active"); 
+  });
 });
