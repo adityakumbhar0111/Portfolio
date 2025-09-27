@@ -24,13 +24,13 @@ This website showcases my skills, projects, and contact details with a clean and
 ---
 
 ## 📂 Project Structure
-portfolio-website/
-│── index.html
-│── /css
-│ └── style.css
-│── /js
-│ └── script.js
-│── README.md
+portfolio-website/<br>
+│── index.html<br>
+│── /css<br>
+│ └── style.css<br>
+│── /js<br>
+│ └── script.js<br>
+│── README.md<br>
 
 ## ⚡ Getting Started
 
