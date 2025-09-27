@@ -17,13 +17,12 @@ const navItems = document.querySelectorAll(".nav-links li a");
 
 toggleBtn.addEventListener("click", () => {
   navLinks.classList.toggle("active");
-  toggleBtn.classList.toggle("active"); 
+  toggleBtn.classList.toggle("active");
 });
-
 
 navItems.forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("active");
-    toggleBtn.classList.remove("active"); 
+    toggleBtn.classList.remove("active");
   });
 });
