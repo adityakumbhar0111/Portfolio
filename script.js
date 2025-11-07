@@ -26,3 +26,14 @@ navItems.forEach((link) => {
     toggleBtn.classList.remove("active");
   });
 });
+
+// Optional: Add subtle motion speed changes or hover pause
+const orbit = document.querySelector(".orbit");
+orbit.addEventListener(
+  "mouseenter",
+  () => (orbit.style.animationPlayState = "paused")
+);
+orbit.addEventListener(
+  "mouseleave",
+  () => (orbit.style.animationPlayState = "running")
+);

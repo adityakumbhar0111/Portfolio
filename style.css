@@ -1135,3 +1135,497 @@ h2 {
     align-items: center;
   }
 }
+
+/*Hero Icons*/
+
+.hero-section {
+  position: relative;
+  width: 380px;
+  height: 380px;
+}
+
+/* Main hero image (container of floating icons) */
+.hero-image {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 5px solid #38bdf8;
+  background: url("Photo.jpg") center/cover no-repeat;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+  overflow: hidden;
+  /* important: keeps icons inside */
+  animation: floatHero 6s ease-in-out infinite;
+}
+
+/* Container for icons (inside hero) */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  /* prevent icon blocking hover */
+}
+
+/* Icons smaller and glowing */
+.orbit .icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+  filter:
+    drop-shadow(0 0 6px rgba(56, 189, 248, 0.9)) drop-shadow(0 0 12px rgba(56, 189, 248, 0.6)) drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.2) contrast(1.15) saturate(1.2);
+
+}
+
+/* Half of icons go clockwise */
+.orbit .icon:nth-child(1),
+.orbit .icon:nth-child(3),
+.orbit .icon:nth-child(5),
+.orbit .icon:nth-child(7) {
+  animation: rotateCW 7s linear infinite;
+}
+
+/* Half go counter-clockwise */
+.orbit .icon:nth-child(2),
+.orbit .icon:nth-child(4),
+.orbit .icon:nth-child(6),
+.orbit .icon:nth-child(8) {
+  animation: rotateCCW 9s linear infinite;
+}
+
+/* Start positions — inside the circle */
+.orbit .icon:nth-child(1) {
+  top: 20%;
+  left: 50%;
+}
+
+.orbit .icon:nth-child(2) {
+  top: 30%;
+  left: 70%;
+}
+
+.orbit .icon:nth-child(3) {
+  top: 50%;
+  left: 80%;
+}
+
+.orbit .icon:nth-child(4) {
+  top: 70%;
+  left: 70%;
+}
+
+.orbit .icon:nth-child(5) {
+  top: 80%;
+  left: 50%;
+}
+
+.orbit .icon:nth-child(6) {
+  top: 70%;
+  left: 30%;
+}
+
+.orbit .icon:nth-child(7) {
+  top: 50%;
+  left: 20%;
+}
+
+.orbit .icon:nth-child(8) {
+  top: 30%;
+  left: 30%;
+}
+
+/* Clockwise movement path — smaller radius inside image */
+@keyframes rotateCW {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+/* Counter-clockwise movement path */
+@keyframes rotateCCW {
+  from {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+
+  to {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+}
+
+/* Gentle float of hero image */
+@keyframes floatHero {
+
+  0%,
+  100% {
+    transform: translate(-50%, -51%);
+  }
+
+  50% {
+    transform: translate(-50%, -49%);
+  }
+}
+
+
+/* Achievements Section */
+#achievements {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #cbd5e1;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-top: 2rem;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+
+/* Section Title */
+#achievements h2 {
+  font-size: 2rem;
+  color: #38bdf8;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+#achievements h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #38bdf8;
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+/* Certificates Grid */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Certificate Card */
+.certificate-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  padding-bottom: 20px;
+  transition: all 0.5s ease;
+  transform: translateY(0px) rotateX(0deg);
+  animation: fadeUp 1s ease both, floatCard 6s ease-in-out infinite alternate;
+}
+
+/* Hover Animation */
+.certificate-card:hover {
+  transform: translateY(-10px) scale(1.03) rotateX(5deg);
+  box-shadow: 0 20px 35px rgba(56, 189, 248, 0.3);
+}
+
+/* Image */
+
+/* Certificate Image Wrapper */
+.certificate-img {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.5);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+/* Certificate Image */
+.certificate-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.8s ease, filter 0.5s ease;
+}
+
+/* Shimmer Effect Using ::before and ::after */
+.certificate-img::before,
+.certificate-img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transition: all 0.8s ease;
+  pointer-events: none;
+}
+
+/* Light Reflection Layer */
+.certificate-img::after {
+  width: 30%;
+  background: linear-gradient(120deg,
+      rgba(56, 189, 248, 0.2) 0%,
+      rgba(56, 189, 248, 0.6) 50%,
+      rgba(56, 189, 248, 0.2) 100%);
+  filter: blur(8px);
+}
+
+/* Hover – Activate the Sliding Light */
+.certificate-card:hover .certificate-img::before {
+  left: 120%;
+  transition: left 1.5s ease-in-out;
+}
+
+.certificate-card:hover .certificate-img::after {
+  left: 120%;
+  transition: left 2s ease-in-out;
+}
+
+/* Hover Effect on Image */
+.certificate-card:hover .certificate-img img {
+  transform: scale(1.08);
+  filter: brightness(1.2) contrast(1.1);
+}
+
+
+/* Text */
+.certificate-card h3 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.certificate-card p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+/* Entry Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating Animation */
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotateX(3deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+}
+
+/* Internship Section */
+
+#internship h2 {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #38bdf8;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+#internship h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: #38bdf8;
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+/* Internship Card Layout */
+.internship-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.internship-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Company Header */
+.internship-header {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.company-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6));
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.internship-info h3 {
+  font-size: 1.4rem;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.internship-info p {
+  font-size: 1rem;
+  color: #94a3b8;
+}
+
+/* Internship Description */
+.internship-body p {
+  line-height: 1.7;
+  color: #cbd5e1;
+  font-size: 1.05rem;
+}
+
+/* Tags */
+.internship-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.internship-tags span {
+  display: inline-block;
+  padding: 5px 12px;
+  box-shadow: 0 10px 20px rgba(3, 3, 3, 0.5);
+  background: linear-gradient(135deg, #101010, #38bdf8);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.internship-tags span:hover {
+  background: linear-gradient(135deg, #38bdf8, #101010);
+  transform: translateY(-2px);
+}
+
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.9));
+  }
+}
+
+
+/* Internship and certificates */
+/* Parent list item */
+.dropdown {
+  position: relative;
+}
+
+/* Add a little dropdown arrow */
+.dropdown>a::after {
+  content: " ▾";
+  font-size: 0.7rem;
+  color: #38bdf8;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover>a::after {
+  transform: rotate(180deg);
+}
+
+/* Dropdown submenu styling */
+.dropdown-menu {
+  position: absolute;
+  top: 2.4rem;
+  left: 0;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  list-style: none;
+  padding: 0.5rem 0;
+  min-width: 180px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.35s ease;
+  z-index: 99;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Sub-items style */
+.dropdown-menu li a {
+  display: block;
+  padding: 0.8rem 1rem;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  padding-left: 1.4rem;
+}
